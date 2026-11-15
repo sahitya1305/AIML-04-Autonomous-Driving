@@ -1,0 +1,7 @@
+# Used by the ROS 2 nodes in WSL: ONNX Runtime detector (no torch needed), no MiDaS by default.
+detector:
+  backend: onnx
+  onnx_path: models/detection/yolo11n.onnx
+pipeline: {lanes: true, lane_seg: false, depth: false}
+depth: {backend: none}
+run: {max_width: 640}

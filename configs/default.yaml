@@ -1,0 +1,82 @@
+# Default configuration. Override with --config <file> and/or --set key=value on the command line.
+# Relative paths are resolved against the project root (works on Windows and Linux).
+
+detector:
+  backend: yolo                         # yolo | onnx | groundtruth (groundtruth = synthetic test double)
+  weights: models/detection/yolo11n.pt  # COCO-pretrained by default; point to your fine-tuned best.pt after training
+  onnx_path: models/detection/yolo11n.onnx
+  onnx_opt_level: all                   # none | basic | extended | all  (ONNX Runtime graph optimisation)
+  threads: 0                            # 0 = ONNX Runtime default
+  gt_file: datasets/samples/synthetic_drive_gt.json
+  gt_jitter_px: 0.0
+  imgsz: 640
+  conf: 0.15                            # low on purpose: ByteTrack uses low-score boxes in its 2nd association
+  iou: 0.5
+  device: cpu
+  max_det: 100
+  classes: [person, pedestrian, rider, bicycle, car, bus, truck, motorcycle]
+
+tracker:                                # ByteTrack-style
+  high_thresh: 0.5
+  low_thresh: 0.1
+  new_track_thresh: 0.6
+  match_thresh: 0.8
+  low_match_thresh: 0.5
+  track_buffer: 30
+  min_hits: 2
+
+pipeline:
+  lanes: true
+  lane_seg: false                       # needs trained weights, see docs/MODULES.md
+  depth: true                           # needs torch + timm + internet once (MiDaS). Falls back to 'disabled' with a warning.
+
+lanes:
+  classical:
+    roi_top: 0.58
+    canny_low: 50
+    canny_high: 150
+    hough_threshold: 25
+    min_line_len: 25
+    max_line_gap: 40
+    smoothing: 0.7
+  segmentation:
+    weights: models/lane_seg/lane_unet.pt
+    device: cpu
+    threshold: 0.5
+
+depth:
+  backend: midas                        # midas | none
+  model_type: MiDaS_small               # MiDaS_small (fast, CPU) | DPT_Hybrid | DPT_Large (slow)
+  device: cpu
+  interval: 3                           # run MiDaS every N frames and reuse the map in between (CPU speed)
+  cache_dir: models/depth
+
+obstacle:
+  camera:
+    hfov_deg: 90.0                      # CALIBRATE for your camera; affects distance estimates
+    height_m: 1.4
+    horizon_y_ratio: 0.45
+  distance_method: height               # height (bbox height + class height) | ground (bbox bottom + flat ground)
+  corridor: {bottom_left: 0.25, bottom_right: 0.75, top_left: 0.47, top_right: 0.53, top_y: 0.47}
+  vulnerable_margin: 0.35               # corridor widened for pedestrians/cyclists
+  cruise_speed: 12.0                    # m/s (43 km/h)
+  caution_speed_factor: 0.5
+  brake_distance: 14.0                  # m
+  caution_distance: 30.0                # m
+  ttc_brake: 2.0                        # s
+  ttc_caution: 4.0                      # s
+  max_decel: 6.0                        # m/s^2
+  release_frames: 8
+
+run:
+  max_width: 960                        # frames wider than this are downscaled (CPU speed)
+  stride: 1
+  max_frames: null
+  output_dir: outputs/videos
+  panel: mosaic                         # mosaic | combined | detections | lanes | depth
+
+wandb:
+  enabled: false                        # or pass --wandb. API key is read from env WANDB_API_KEY (never stored in files)
+  project: aiml04-driving-perception
+  entity: null
+  mode: online                          # online | offline

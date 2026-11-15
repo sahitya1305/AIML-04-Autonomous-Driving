@@ -1,0 +1,10 @@
+# CORE: enough for the synthetic demo, tracking, lanes, obstacle logic, dataset scripts, tests and ONNX Runtime inference.
+# Works on Python 3.12 (Windows or Ubuntu).
+numpy>=1.26
+opencv-python>=4.8
+PyYAML>=6.0
+scipy>=1.11
+matplotlib>=3.8
+pandas>=2.0
+onnxruntime>=1.17
+pytest>=8.0

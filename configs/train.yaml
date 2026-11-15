@@ -1,0 +1,17 @@
+# Fine-tuning settings for scripts/train_detector.py
+model: yolo11n.pt                       # start from COCO-pretrained weights
+data: datasets/processed/bdd100k_yolo/data.yaml
+epochs: 30
+imgsz: 640
+batch: 16
+device: cpu                             # use 0 on a Colab/Kaggle GPU
+workers: 2
+project: experiments
+name: yolo11n_bdd100k
+patience: 10
+seed: 0
+wandb:
+  enabled: false
+  project: aiml04-driving-perception
+  entity: null
+  mode: online

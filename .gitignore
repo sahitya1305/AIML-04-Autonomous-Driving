@@ -1,0 +1,102 @@
+# =====================================================================
+# AIML-04 Autonomous Driving Perception Stack - .gitignore
+# Rule of thumb: Git stores code, configs, docs and tests.
+# It does NOT store datasets, model weights, generated outputs or secrets.
+# =====================================================================
+
+# ---------- Secrets (never commit these) ----------
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+secrets/
+wandb_api_key*
+netrc
+.netrc
+
+# ---------- Python virtual environments ----------
+.venv/
+venv/
+env/
+ENV/
+
+# ---------- Python caches and build artifacts ----------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+dist/
+
+# ---------- Jupyter ----------
+.ipynb_checkpoints/
+
+# ---------- IDE / OS files ----------
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---------- Datasets ----------
+datasets/raw/*
+!datasets/raw/.gitkeep
+datasets/processed/*
+!datasets/processed/.gitkeep
+
+# ---------- Model weights and binaries ----------
+models/detection/*
+!models/detection/.gitkeep
+models/tracking/*
+!models/tracking/.gitkeep
+models/depth/*
+!models/depth/.gitkeep
+
+*.pt
+*.pth
+*.onnx
+*.engine
+*.trt
+*.weights
+*.ckpt
+*.safetensors
+*.h5
+*.npz
+*.npy
+
+# ---------- Generated outputs ----------
+outputs/images/*
+!outputs/images/.gitkeep
+outputs/videos/*
+!outputs/videos/.gitkeep
+outputs/metrics/*
+!outputs/metrics/.gitkeep
+outputs/visualizations/*
+!outputs/visualizations/.gitkeep
+
+# ---------- Experiment tracking ----------
+wandb/
+runs/
+lightning_logs/
+experiments/*
+!experiments/.gitkeep
+!experiments/README.md
+
+# ---------- Large media and archives ----------
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.zip
+*.tar
+*.tar.gz
+*.7z
+
+# ---------- ROS 2 build products ----------
+build/
+install/
+log/

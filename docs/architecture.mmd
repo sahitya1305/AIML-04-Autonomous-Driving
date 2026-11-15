@@ -1,0 +1,41 @@
+flowchart LR
+  subgraph IN[Input]
+    V[Video / image / folder]
+    CAM[CARLA camera<br/>or recorded CARLA frames]
+    SYN[Synthetic scene<br/>test world]
+  end
+  subgraph PIPE[PerceptionPipeline - src/perception/pipeline.py]
+    DET[Detector<br/>YOLO / ONNX Runtime]
+    TRK[ByteTrack-style tracker]
+    LANE[Lane detection<br/>OpenCV classical]
+    SEG[Lane segmentation<br/>tiny U-Net - optional]
+    DEP[MiDaS depth<br/>every N frames]
+    OBS[Obstacle logic<br/>distance - corridor - TTC]
+  end
+  subgraph OUT[Outputs]
+    REN[Renderer<br/>boxes IDs lanes depth HUD]
+    GUI[Tk demo UI]
+    MP4[Saved mp4 / png]
+    WB[Weights and Biases]
+    VEH[VehicleSim / CARLA brake]
+  end
+  subgraph ROS[ROS 2 Jazzy in WSL2]
+    CP[camera_publisher<br/>sensor_msgs/Image]
+    PN[perception_node]
+    VN[vehicle_sim_node]
+  end
+  V --> DET
+  CAM --> DET
+  SYN --> DET
+  DET --> TRK --> OBS
+  V --> LANE --> OBS
+  V --> SEG -.compare.-> LANE
+  V --> DEP --> OBS
+  OBS --> VEH
+  OBS --> REN --> GUI
+  REN --> MP4
+  PIPE --> WB
+  CP -- /camera/image_raw --> PN
+  PN -- /perception/decision --> VN
+  VN -- /vehicle/speed --> PN
+  PN -. uses .-> PIPE

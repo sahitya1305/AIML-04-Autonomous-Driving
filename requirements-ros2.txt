@@ -1,0 +1,3 @@
+# Installed INSIDE Ubuntu WSL2 in a venv created with --system-site-packages (see scripts/ros2_setup_wsl.sh).
+# ROS 2 packages (rclpy, sensor_msgs ...) come from apt, NOT pip.
+onnxruntime

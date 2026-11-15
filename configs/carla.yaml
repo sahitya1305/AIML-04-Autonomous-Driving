@@ -1,0 +1,15 @@
+carla:
+  host: 127.0.0.1                       # from WSL2 use your Windows host IP (see docs/ROS2_CARLA.md)
+  port: 2000
+  timeout_s: 20
+  town: null                            # e.g. Town03; null keeps the loaded map
+  spawn_index: 0
+  fixed_delta_s: 0.05
+  camera: {width: 800, height: 450, fov: 90, x: 1.5, z: 1.6}
+  obstacle_distance_m: 45               # parked car spawned this far ahead (for the obstacle demo)
+  cruise_speed_kmh: 30
+detector:
+  backend: yolo
+run: {max_width: 800}
+obstacle:
+  camera: {hfov_deg: 90.0, height_m: 1.6}

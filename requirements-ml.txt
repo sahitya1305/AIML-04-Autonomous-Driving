@@ -1,0 +1,8 @@
+# ML extras: YOLO (PyTorch), MiDaS, lane U-Net, ONNX export, W&B.  Install AFTER requirements.txt.
+# On Windows CPU-only PyTorch (smaller download):
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+ultralytics>=8.3
+timm>=0.9          # needed by MiDaS via torch.hub
+onnx>=1.16
+onnxslim
+wandb>=0.17
