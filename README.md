@@ -10,7 +10,8 @@ A modular autonomous-driving perception prototype for road-object detection and 
 Synthetic demo video, ground-truth test detector, tracking, classical OpenCV lanes, obstacle logic, closed-loop braking scenarios, dataset-analysis demo and test suite. The ground-truth detector is a test double, not a neural network.
 
 ## What has been tested with the ML install
-- Pretrained YOLO11n detection on the supplied real bus image.
+- Pretrained YOLO11n detection on the supplied real bus image; detected 1 bus and 4 persons, with an annotated output image generated.
+YOLO annotated video inference on the synthetic driving video; output generated, but some detections were incorrect.
 - ONNX export, structural validation and ONNX Runtime CPU inference.
 - PyTorch CPU vs ONNX Runtime CPU benchmark (see `docs/LOCAL_VALIDATION.md`).
 - ONNX pipeline execution on the supplied bus image.

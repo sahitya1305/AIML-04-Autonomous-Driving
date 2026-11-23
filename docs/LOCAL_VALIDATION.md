@@ -11,6 +11,7 @@ project-generation environment.
 - Synthetic driving dataset and video generation.
 - Automated test suite: 73 passed, 4 skipped.
 - YOLO11n pretrained inference on the sample bus image.
+- YOLO annotated video inference on synthetic driving footage; video generated, but some detections were incorrect.
 - ONNX export and structural validation.
 - ONNX Runtime inference on the sample bus image.
 - ByteTrack-style custom tracker and pipeline execution.
