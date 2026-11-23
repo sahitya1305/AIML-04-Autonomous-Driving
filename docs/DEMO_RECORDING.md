@@ -6,7 +6,7 @@
 
 **Screen recording of the GUI:** Windows `Win+G` (Xbox Game Bar) -> record, or OBS Studio.
 
-**ROS 2:** `bash scripts/ros2_run_demo.sh` records `outputs/videos/ros2_demo.mp4` from the `/perception/annotated` stream; add `rqt_image_view` for a live window (needs WSLg on Windows 11).
+**ROS 2:** `bash scripts/ros2_run_demo.sh` records `outputs/videos/ros2_demo_short.mp4` from the `/perception/annotated` stream; add `rqt_image_view` for a live window (needs WSLg on Windows 11).
 
 **CARLA (only if you have a suitable GPU/cloud machine):** `python scripts/carla_run.py --save outputs/videos/carla_demo.mp4`.
 
