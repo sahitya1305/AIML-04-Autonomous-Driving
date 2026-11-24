@@ -16,6 +16,7 @@ project-generation environment.
 - ONNX Runtime inference on the sample bus image.
 - ByteTrack-style custom tracker and pipeline execution.
 - Synthetic closed-loop scenarios: empty road, stopped vehicle, pedestrian.
+- Closed-loop stopped-vehicle video visually verified; CLEAR, CAUTION, and BRAKE status indicators confirmed.
 - Classical OpenCV lane detection on synthetic roads.
 - ROS2 Jazzy package build in WSL2.
 - ROS2 camera-to-perception-to-vehicle pipeline using synthetic video.
@@ -26,7 +27,7 @@ project-generation environment.
   /perception/tracks
   /vehicle/speed
   /cmd_vel
-- ROS2 demo recording saved as outputs/videos/ros2_demo.mp4.
+- ROS2 demo recording saved as outputs/videos/ros2_demo_short.mp4.
 
 ## ONNX CPU benchmark
 
