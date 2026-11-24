@@ -131,7 +131,8 @@ The ROS 2 Jazzy package was built and its camera-to-perception-to-vehicle topic 
 
 ## Deliverables map
 README (this) - `docs/ARCHITECTURE.md` + `docs/architecture.png` - `docs/MODULES.md` - `docs/DATASETS.md` - `docs/API.md` - `docs/TESTING.md` - `docs/BENCHMARK_REPORT.md` - `docs/LOCAL_VALIDATION.md` - `docs/DEMO_RECORDING.md` - `docs/GIT_WORKFLOW.md` - `docs/PRESENTATION.md` - `docs/REFLECTION_TEMPLATE.md` - `docs/STATUS.md`.
-
+### Submission Package
+- Google Drive (videos, screenshots, validation reports, requirements): [Download submission ZIP](https://drive.google.com/file/d/1zhjlxRFJCKaEkWmCSibvwkwEbKHP5tJz/view?usp=sharing)
 ## First-run checklist
 - [x] Core dependencies installed and `python main.py check` verified.
 - [x] Test suite: 73 passed, 4 skipped.
